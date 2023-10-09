@@ -2,6 +2,6 @@ mlflow
 pandas
 pyarrow
 google-cloud-storage
-sklearn
+scikit-learn
 dvc
 dvc-gs
