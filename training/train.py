@@ -41,7 +41,7 @@ def calculate_trip_duration_in_minutes(df):
 
 
 def save_reference_data(X_train, y_train):
-    y_pred = lr.predict(X_train)
+    y_pred_train = lr.predict(X_train)
     reference_data = X_train.copy()
     reference_data['duration'] = y_train
     reference_data['prediction'] = y_pred_train
