@@ -1,9 +1,5 @@
 # MLOps Project
 
+I tried replacing the evidently service with my own version which takes in single predictions via the webservice and stores them in a Postgres db. Once there are enough samples (set to 50 rows), evidently will create a report and store it in another Postgres table. The idea is to continually create reports while new predictions are being made. The reference data used for the reports is stored in a GCS bucket and re-generated from the training data with each new training run via `/training/train.py`. This is triggered by pull requests to the main branch.
 
-Please do not fork this repository, but use this repository as a template for your MLOps project. Make Pull Requests to your own repository even if you work alone and mark the checkboxes with an x, if you are done with a topic in the pull request message.
-
-## Project for today
-The task for today you can find in the [project-description.md](project-description.md) file.
-
-test change yeah
+This took me a couple of hours. Didn't finish the other parts, but the plan was to have Prometheus scrape the Postgres database for new data drift reports instead of scraping the data directly from the evidently Flask service. I did this mainly because I didn't manage to fully understand how Flask+Prometheus middleware work and it felt better working on this than just copy-pasting the lessons from the last week together tbh. It's also a good idea (or necessary?) to store the predictions somewhere and neither the webservice nor the evidently service from last week do this afaik.
