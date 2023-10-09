@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 import mlflow
+from mlflow.tracking.client import MlflowClient
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error
 from sklearn.linear_model import LinearRegression
@@ -14,6 +15,7 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = GOOGLE_APPLICATION_CREDENTIALS
 
 
 mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
+client = MlflowClient(tracking_uri=MLFLOW_TRACKING_URI)
 mlflow.set_experiment('green-taxi-mlops-project')
 
 
