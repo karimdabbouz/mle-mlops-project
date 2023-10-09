@@ -20,17 +20,17 @@ def index():
 def post_prediction():
     cat_features = ['PULocationID', 'DOLocationID']
     num_features = ['trip_distance', 'passenger_count', 'fare_amount', 'total_amount']
-    target = 'duration'
+    # this needs to be a gcs path to load the latest reference data generated in the last training run:
     reference_data = pd.read_parquet('./data/reference_data.parquet')
     prediction = request.json
     new_entry = Predictions(**prediction)
     db.session.add(new_entry)
     db.session.commit()
     last_predictions = load_last_50_predictions()
-    if len(last_predictions) >= 2: # CHANGE TO MIN SIZE FOR REPORT!
+    if len(last_predictions) >= 50:
         df = pd.DataFrame([row.__dict__ for row in last_predictions])
         df = df.drop('_sa_instance_state', axis=1)
-        report = create_report(reference_data, df, num_features, cat_features, target)
+        report = create_report(reference_data, df, num_features, cat_features)
         report_dict = {
             'timestamp': datetime.datetime.now(),
             'prediction_drift': report['metrics'][0]['result']['drift_score'],

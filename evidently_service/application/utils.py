@@ -8,26 +8,21 @@ from evidently.metrics import (
 )
 
 
-# load reference data from GCS
-def load_reference_data():
-    pass
-
 
 def load_last_50_predictions():
     last_50_rows = Predictions.query.order_by(Predictions.id.desc()).limit(50).all()
     return last_50_rows
 
 
-def create_report(reference_data, df, num_features, cat_features, target):
+def create_report(reference_data, df, num_features, cat_features):
     column_mapping = ColumnMapping(
-        prediction="prediction",
+        prediction='prediction',
         numerical_features=num_features,
-        categorical_features=cat_features,
-        target=target,
+        categorical_features=cat_features
     )
     report = Report(
         metrics=[
-            ColumnDriftMetric(column_name="prediction"),
+            ColumnDriftMetric(column_name='prediction'),
             DatasetDriftMetric(),
             DatasetMissingValuesMetric(),
         ]

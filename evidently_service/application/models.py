@@ -9,7 +9,6 @@ class Predictions(db.Model):
     passenger_count = db.Column(db.Float)
     fare_amount = db.Column(db.Float)
     total_amount = db.Column(db.Float)
-    duration = db.Column(db.Float)
     prediction = db.Column(db.Float)
 
 
