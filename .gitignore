@@ -1,3 +1,4 @@
+training/data/*
 service-account-key.json
 
 # Byte-compiled / optimized / DLL files
