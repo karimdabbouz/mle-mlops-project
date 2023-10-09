@@ -1,0 +1,7 @@
+mlflow
+pandas
+pyarrow
+google-cloud-storage
+sklearn
+dvc
+dvc-gs

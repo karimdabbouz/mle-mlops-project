@@ -1,5 +1,4 @@
 import os
-from dotenv import load_dotenv
 import pandas as pd
 import mlflow
 from sklearn.model_selection import train_test_split
