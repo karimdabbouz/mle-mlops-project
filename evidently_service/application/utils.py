@@ -1,4 +1,4 @@
-from .models import Predictions
+from .models import Predictions, SessionLocal
 from evidently.report import Report
 from evidently import ColumnMapping
 from evidently.metrics import (
@@ -10,7 +10,9 @@ from evidently.metrics import (
 
 
 def load_last_50_predictions():
-    last_50_rows = Predictions.query.order_by(Predictions.id.desc()).limit(50).all()
+    db = SessionLocal()
+    last_50_rows = db.query(Predictions).order_by(Predictions.id.desc()).limit(50).all()
+    db.close()
     return last_50_rows
 
 

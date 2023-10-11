@@ -13,8 +13,8 @@ def load_model(model_name):
 
 def predict(model_name, data):
     load_dotenv()
-    MLFLOW_TRACKING_URI = 'http://34.159.49.139:5000/'
-    SA_KEY = '../service-account-key.json'
+    MLFLOW_TRACKING_URI = os.getenv('MFLOW_TRACKING_URI')
+    SA_KEY = './service-account-key.json'
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = SA_KEY
 
     mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)

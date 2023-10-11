@@ -1,0 +1,6 @@
+pydantic
+fastapi
+mlflow
+uvicorn
+google-cloud-storage
+python-dotenv
