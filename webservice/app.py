@@ -3,9 +3,12 @@ from data_model import TaxiRide, TaxiRidePrediction
 from predict import predict
 import requests
 import json
+from prometheus_fastapi_instrumentator import Instrumentator
 
 
 app = FastAPI()
+Instrumentator().instrument(app).expose(app)
+
 
 
 @app.get('/')

@@ -1,0 +1,13 @@
+apiVersion: 1
+
+datasources:
+  - name: PostgreSQL
+    type: postgres
+    access: proxy
+    url: 34.159.72.114:5432
+    database: prediction-db
+    user: mlflow-user
+    secureJsonData:
+      password: 'nothinghere'
+    jsonData:
+      sslmode: 'disable'

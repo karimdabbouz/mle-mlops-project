@@ -4,3 +4,4 @@ mlflow
 uvicorn
 google-cloud-storage
 python-dotenv
+prometheus-fastapi-instrumentator==5.7.1
